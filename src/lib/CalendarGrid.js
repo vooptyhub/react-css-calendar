@@ -1,6 +1,14 @@
 import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
-import {hoursInDay, tenMinutesHeight, timeLineWidth, divider, header} from './Constants'
+import {
+    hoursInDay,
+    divider,
+    header,
+    dimensions,
+    colorScheme,
+    minutesInHour,
+    tenMinutes
+} from './Constants'
 import {gridTemplateRows} from './Calendar'
 import {CalendarDay} from './CalendarDay'
 import {withStyles} from './styles'
@@ -21,8 +29,9 @@ export const CalendarGrid = withStyles(({
     grid: {
         flex: '1 0 0%',
         display: 'grid',
-        gridTemplateColumns: ({dates}) => `${timeLineWidth}px repeat(${dates.length}, 1fr)`,
-        gridTemplateRows: ({startHour, endHour}) => gridTemplateRows(hoursInDay, startHour, endHour, `${tenMinutesHeight * 6}px`),
+        gridTemplateColumns: ({dates, dimensions: {timeLineWidth}}) => `${timeLineWidth}px repeat(${dates.length}, 1fr)`,
+        gridTemplateRows: ({startHour, endHour, dimensions: {tenMinutesHeight}}) =>
+            gridTemplateRows(hoursInDay, startHour, endHour, `${tenMinutesHeight * (minutesInHour / tenMinutes)}px`),
         gridRowGap: 0,
         gridColumnGap: 0,
     },
@@ -42,6 +51,8 @@ export const CalendarGrid = withStyles(({
             renderDate: PropTypes.func.isRequired,
             renderTime: PropTypes.func.isRequired,
             renderEvent: PropTypes.func.isRequired,
+            dimensions: PropTypes.object.isRequired,
+            colorScheme: PropTypes.object.isRequired,
             onTimeSlotClick: PropTypes.func
         };
         static defaultProps = {
@@ -51,7 +62,9 @@ export const CalendarGrid = withStyles(({
             events: [],
             renderEvent: (event) => JSON.stringify(event),
             renderDate: (hour) => moment({hour}).format('LT'),
-            renderTime: (date) => date.format('D MMM')
+            renderTime: (date) => date.format('D MMM'),
+            dimensions,
+            colorScheme
         };
 
         getDateEvents(date) {
@@ -82,27 +95,23 @@ export const CalendarGrid = withStyles(({
         };
 
         render() {
-            const {classes, dates, startHour, endHour, onTimeSlotClick, renderTime, renderEvent} = this.props;
+            const {classes, dates, ...rest} = this.props;
             const {CalendarHourGrid} = this;
 
             return (
                 <div className={classes.root}>
-                    <GridHeader renderTime={renderTime}
-                                dates={dates}/>
+                    <GridHeader dates={dates} {...rest}/>
                     <div style={{display: 'flex', flexDirection: 'column', flex: 1}}>
                         <div className={classes.grid}>
                             <CalendarHourGrid/>
                             {dates.map((date, index) => (
                                 <CalendarDay key={index}
                                              date={date}
-                                             startHour={startHour}
-                                             endHour={endHour}
                                              style={{
                                                  gridRow: `1 /${hoursInDay + 1}`,
                                                  gridColumn: `${index + 2} /${index + 3}`,
                                              }}
-                                             onTimeSlotClick={onTimeSlotClick}
-                                             renderEvent={renderEvent}
+                                             {...rest}
                                              events={this.getDateEvents(date)}/>
                             ))}
                         </div>

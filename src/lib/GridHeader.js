@@ -1,12 +1,12 @@
 import React from 'react'
 import {withStyles} from './styles'
-import {timeLineWidth, headerHeight, divider, header} from './Constants'
+import {divider, header} from './Constants'
 
 export const GridHeader = withStyles(({
     root: {
         display: 'grid',
-        gridTemplateColumns: ({dates}) => `${timeLineWidth}px repeat(${dates.length}, 1fr)`,
-        gridTemplateRows: `${headerHeight}px 1fr`,
+        gridTemplateColumns: ({dates, dimensions: {timeLineWidth}}) => `${timeLineWidth}px repeat(${dates.length}, 1fr)`,
+        gridTemplateRows: ({dimensions: {headerHeight}}) => `${headerHeight}px 1fr`,
         borderBottom: `1px solid ${divider}`,
         overflow: 'hidden',
     },

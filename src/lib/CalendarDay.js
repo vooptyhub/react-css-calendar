@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {times} from 'lodash'
 import {groupByOverlap, gridTemplateRows} from './Calendar'
-import {tenMinutesHeight, tenMinutes, hoursInDay, minutesInHour, background, divider, hover} from './Constants'
+import {tenMinutes, hoursInDay, minutesInHour, background, divider, hover} from './Constants'
 import {withStyles} from './styles'
 
 const toGridRow = (from, to) => (from + 1) + '/' + (to + 1);
@@ -16,7 +16,8 @@ export const CalendarDay = withStyles(({
         },
         timegrid: {
             display: 'grid',
-            gridTemplateRows: ({startHour, endHour}) => gridTemplateRows(toMinutes(hoursInDay), toMinutes(startHour), toMinutes(endHour), `${tenMinutesHeight}px`),
+            gridTemplateRows: ({startHour, endHour, dimensions: {tenMinutesHeight}}) =>
+                gridTemplateRows(toMinutes(hoursInDay), toMinutes(startHour), toMinutes(endHour), `${tenMinutesHeight}px`),
             padding: 0,
             gridColumn: '1 / span 1',
             gridRow: '1 / span 24',
