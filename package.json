@@ -1,0 +1,22 @@
+{
+  "name": "react-css-calendar",
+  "version": "0.1.0",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react-jss": "^8.6.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "0.9.x"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
