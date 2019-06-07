@@ -50,8 +50,8 @@ export const CalendarGrid = withStyles(({
             dates: [moment.utc()],
             events: [],
             renderEvent: (event) => JSON.stringify(event),
-            renderDate: (hour) => (hour),
-            renderTime: (date) => date.format()
+            renderDate: (hour) => moment({hour}).format('LT'),
+            renderTime: (date) => date.format('D MMM')
         };
 
         getDateEvents(date) {

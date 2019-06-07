@@ -6,7 +6,7 @@ export const GridHeader = withStyles(({
     root: {
         display: 'grid',
         gridTemplateColumns: ({dates}) => `${timeLineWidth}px repeat(${dates.length}, 1fr)`,
-        gridTemplateRows: `60px 1fr`,
+        gridTemplateRows: `${timeLineWidth}px 1fr`,
         borderBottom: `1px solid ${divider}`,
         overflow: 'hidden',
     },
@@ -18,11 +18,12 @@ export const GridHeader = withStyles(({
     },
     dayHeader: {
         borderRight: `1px solid ${divider}`,
-        padding: 8,
         minWidth: 0,
         display: 'flex',
         flexDirection: 'column',
         flex: "1 0 0%",
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 }))(
     class extends React.PureComponent {
