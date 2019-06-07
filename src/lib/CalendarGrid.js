@@ -2,8 +2,6 @@ import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {
     hoursInDay,
-    divider,
-    header,
     dimensions,
     colorScheme,
     minutesInHour,
@@ -18,9 +16,9 @@ import moment from 'moment'
 
 export const CalendarGrid = withStyles(({
     root: {
-        borderLeft: `1px solid ${divider}`,
-        borderTop: `1px solid ${divider}`,
-        backgroundColor: header,
+        borderLeft: ({colorScheme: {divider}}) => `1px solid ${divider}`,
+        borderTop: ({colorScheme: {divider}}) => `1px solid ${divider}`,
+        backgroundColor: ({colorScheme: {header}}) => header,
         overflowX: 'hidden',
         flex: "1 0 0%",
         display: 'flex',
@@ -36,8 +34,8 @@ export const CalendarGrid = withStyles(({
         gridColumnGap: 0,
     },
     sideline: {
-        borderRight: `1px solid ${divider}`,
-        borderBottom: `1px solid ${divider}`,
+        borderRight: ({colorScheme: {divider}}) => `1px solid ${divider}`,
+        borderBottom: ({colorScheme: {divider}}) => `1px solid ${divider}`,
         display: 'flex',
         justifyContent: 'center'
     },
@@ -55,6 +53,7 @@ export const CalendarGrid = withStyles(({
             colorScheme: PropTypes.object.isRequired,
             onTimeSlotClick: PropTypes.func
         };
+
         static defaultProps = {
             startHour: 0,
             endHour: 24,

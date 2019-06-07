@@ -1,23 +1,22 @@
 import React from 'react'
 import {withStyles} from './styles'
-import {divider, header} from './Constants'
 
 export const GridHeader = withStyles(({
     root: {
         display: 'grid',
         gridTemplateColumns: ({dates, dimensions: {timeLineWidth}}) => `${timeLineWidth}px repeat(${dates.length}, 1fr)`,
         gridTemplateRows: ({dimensions: {headerHeight}}) => `${headerHeight}px 1fr`,
-        borderBottom: `1px solid ${divider}`,
+        borderBottom: ({colorScheme: {divider}}) => `1px solid ${divider}`,
         overflow: 'hidden',
     },
     sideline: {
-        backgroundColor: header,
-        borderRight: `1px solid ${divider}`,
+        backgroundColor: ({colorScheme: {header}}) => header,
+        borderRight: ({colorScheme: {divider}}) => `1px solid ${divider}`,
         gridRow: `1 / span 2`,
         gridColumn: `1 / span 1`,
     },
     dayHeader: {
-        borderRight: `1px solid ${divider}`,
+        borderRight: ({colorScheme: {divider}}) => `1px solid ${divider}`,
         minWidth: 0,
         display: 'flex',
         flexDirection: 'column',

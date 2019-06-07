@@ -15,9 +15,3 @@ export const colorScheme = {
     hover: '#E6E6E6',
     header: '#F5F5F5'
 };
-
-
-export const background = '#fafafa';
-export const divider = '#DCDCDC';
-export const hover = '#E6E6E6';
-export const header = '#F5F5F5';

@@ -1,15 +1,15 @@
 import React, {Component, Fragment} from 'react'
 import {times} from 'lodash'
 import {groupByOverlap, gridTemplateRows} from './Calendar'
-import {tenMinutes, hoursInDay, minutesInHour, background, divider, hover} from './Constants'
+import {tenMinutes, hoursInDay, minutesInHour} from './Constants'
 import {withStyles} from './styles'
 
 const toGridRow = (from, to) => (from + 1) + '/' + (to + 1);
 const toMinutes = (hours) => (hours * minutesInHour) / tenMinutes;
 export const CalendarDay = withStyles(({
         root: {
-            borderRight: `1px solid ${divider}`,
-            backgroundColor: background,
+            borderRight: ({colorScheme: {divider}}) => `1px solid ${divider}`,
+            backgroundColor: ({colorScheme: {background}}) => background,
             display: 'grid',
             overflow: 'hidden',
             gridTemplateRows: ({startHour, endHour}) => gridTemplateRows(hoursInDay, startHour, endHour, '1fr'),
@@ -23,11 +23,11 @@ export const CalendarDay = withStyles(({
             gridRow: '1 / span 24',
         },
         separator: {
-            backgroundColor: divider,
+            backgroundColor: ({colorScheme: {divider}}) => divider,
             height: 1,
         },
         event: {
-            border: `1px solid ${divider}`,
+            border: ({colorScheme: {divider}}) => `1px solid ${divider}`,
             minWidth: 0,
             minHeight: 0,
             overflow: 'hidden',
@@ -42,7 +42,7 @@ export const CalendarDay = withStyles(({
             justifyContent: 'flex-end',
             gridColumn: `1 / span 1`,
             '&:hover': {
-                backgroundColor: hover,
+                backgroundColor: ({colorScheme: {hover}}) => hover,
             }
         }
     }
