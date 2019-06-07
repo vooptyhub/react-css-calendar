@@ -59,7 +59,7 @@ export const CalendarGrid = withStyles(({
             endHour: 24,
             dates: [moment.utc()],
             events: [],
-            renderEvent: (event) => JSON.stringify(event),
+            renderEvent: (event) => event.title,
             renderDate: (hour) => moment({hour}).format('LT'),
             renderTime: (date) => date.format('D MMM'),
             dimensions,

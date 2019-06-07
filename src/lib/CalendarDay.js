@@ -34,6 +34,7 @@ export const CalendarDay = withStyles(({
             wordBreak: 'break-all',
             display: 'flex',
             flexDirection: 'column',
+            backgroundColor: ({colorScheme: {hover}}) => hover,
         },
         hour: {
             zIndex: 1,
