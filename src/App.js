@@ -7,7 +7,7 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="App-header">
-                    <h2>Welcome to React CSS Grid by Voopty</h2>
+                    <h2>Welcome to React Calendar base on Grid CSS by Voopty</h2>
                 </div>
                 <div className="App-intro">
                     <CalendarGrid/>

@@ -39,8 +39,8 @@ export const CalendarGrid = withStyles(({
             endHour: PropTypes.number.isRequired,
             dates: PropTypes.array.isRequired,
             events: PropTypes.array.isRequired,
-            renderRowTitleCell: PropTypes.func.isRequired,
-            renderColumnTitleCell: PropTypes.func.isRequired,
+            renderDate: PropTypes.func.isRequired,
+            renderTime: PropTypes.func.isRequired,
             renderEvent: PropTypes.func.isRequired
         };
         static defaultProps = {
@@ -49,9 +49,9 @@ export const CalendarGrid = withStyles(({
             dates: [moment.utc()],
             events: [],
             renderEvent: (event) => JSON.stringify(event),
-            renderRowTitleCell: (hour) => (hour),
-            renderColumnTitleCell: (date) => date.format()
-        }
+            renderDate: (hour) => (hour),
+            renderTime: (date) => date.format()
+        };
 
         getDateEvents(date) {
             return this.props.events.filter(({start, end}) =>
@@ -61,7 +61,7 @@ export const CalendarGrid = withStyles(({
         }
 
         CalendarHourGrid = () => {
-            const {classes, startHour, endHour, renderRowTitleCell} = this.props;
+            const {classes, startHour, endHour, renderDate} = this.props;
 
             return times(endHour - startHour, t => {
                 const hour = t + startHour;
@@ -73,7 +73,7 @@ export const CalendarGrid = withStyles(({
                                 gridColumn: '1 / 2',
                                 gridRow: `${hour + 1} / ${hour + 2}`,
                             }}>
-                            {renderRowTitleCell(hour)}
+                            {renderDate(hour)}
                         </div>
                     </Fragment>
                 )
@@ -81,12 +81,12 @@ export const CalendarGrid = withStyles(({
         };
 
         render() {
-            const {classes, dates, startHour, endHour, onHourClicked, renderColumnTitleCell, renderEvent} = this.props;
+            const {classes, dates, startHour, endHour, onHourClicked, renderTime, renderEvent} = this.props;
             const {CalendarHourGrid} = this;
 
             return (
                 <div className={classes.root}>
-                    <GridHeader renderColumnTitleCell={renderColumnTitleCell}
+                    <GridHeader renderTime={renderTime}
                                 dates={dates}/>
                     <div style={{display: 'flex', flexDirection: 'column', flex: 1}}>
                         <div className={classes.grid}>
