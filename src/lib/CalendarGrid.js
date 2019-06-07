@@ -41,7 +41,8 @@ export const CalendarGrid = withStyles(({
             events: PropTypes.array.isRequired,
             renderDate: PropTypes.func.isRequired,
             renderTime: PropTypes.func.isRequired,
-            renderEvent: PropTypes.func.isRequired
+            renderEvent: PropTypes.func.isRequired,
+            onTimeSlotClick: PropTypes.func
         };
         static defaultProps = {
             startHour: 0,
@@ -81,7 +82,7 @@ export const CalendarGrid = withStyles(({
         };
 
         render() {
-            const {classes, dates, startHour, endHour, onHourClicked, renderTime, renderEvent} = this.props;
+            const {classes, dates, startHour, endHour, onTimeSlotClick, renderTime, renderEvent} = this.props;
             const {CalendarHourGrid} = this;
 
             return (
@@ -100,7 +101,7 @@ export const CalendarGrid = withStyles(({
                                                  gridRow: `1 /${hoursInDay + 1}`,
                                                  gridColumn: `${index + 2} /${index + 3}`,
                                              }}
-                                             onHourClicked={onHourClicked}
+                                             onTimeSlotClick={onTimeSlotClick}
                                              renderEvent={renderEvent}
                                              events={this.getDateEvents(date)}/>
                             ))}

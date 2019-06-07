@@ -49,14 +49,14 @@ export const CalendarDay = withStyles(({
     class extends Component {
 
         HoursGrid = () => {
-            const {classes, date, onHourClicked} = this.props;
+            const {classes, date, onTimeSlotClick} = this.props;
 
             return (
                 <Fragment>
                     {
                         times(hoursInDay, hour => (
                             <div key={hour}
-                                 onClick={() => onHourClicked(date.clone().hour(hour))}
+                                 onClick={() => onTimeSlotClick(date.clone().hour(hour))}
                                  className={classes.hour}
                                  style={{gridRow: `${hour + 1} / span 1`}}>
                                 <div className={classes.separator}/>
