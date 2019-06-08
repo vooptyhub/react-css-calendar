@@ -1,10 +1,18 @@
 import React, {Component} from 'react'
 import {withStyles} from './styles'
+import PropTypes from "prop-types";
+import moment from 'moment'
+import {colorScheme, dimensions} from "./Constants";
 
 export const CalendarList = withStyles(({
     root: {
+        borderTop: ({colorScheme: {divider}}) => `1px solid ${divider}`,
+        borderLeft: ({colorScheme: {divider}}) => `1px solid ${divider}`,
+        borderRight: ({colorScheme: {divider}}) => `1px solid ${divider}`,
         overflow: 'auto',
         flex: "1 0 auto",
+        display: 'flex',
+        flexDirection: 'column'
     },
     day: {
         display: 'flex',
@@ -13,6 +21,24 @@ export const CalendarList = withStyles(({
     },
 }))(
     class extends Component {
+        static propTypes = {
+            dates: PropTypes.array.isRequired,
+            events: PropTypes.array.isRequired,
+            renderDate: PropTypes.func.isRequired,
+            renderEvent: PropTypes.func.isRequired,
+            dimensions: PropTypes.object.isRequired,
+            colorScheme: PropTypes.object.isRequired,
+            onTimeSlotClick: PropTypes.func
+        };
+
+        static defaultProps = {
+            dates: [moment.utc()],
+            events: [],
+            renderEvent: (event) => event.title,
+            renderDate: (hour) => moment({hour}).format('LT'),
+            dimensions,
+            colorScheme
+        };
 
         getDateEvents(date) {
             return this.props.events.filter(({start, end}) =>
@@ -26,12 +52,12 @@ export const CalendarList = withStyles(({
             if (dayEvents.length < 1) {
                 return null
             }
-            const {classes, renderDateTitle, renderEvent} = this.props;
+            const {classes, renderDate, renderEvent} = this.props;
             const withKeyProp = (component, index) => React.cloneElement(component, {key: index});
             return (
                 <div key={dayIndex}
                      className={classes.day}>
-                    {withKeyProp(renderDateTitle(date, dayIndex), dayIndex)}
+                    {withKeyProp(renderDate(date, dayIndex), dayIndex)}
                     {dayEvents.map((event, index) => withKeyProp(renderEvent(event), index))}
                 </div>
             )
@@ -41,10 +67,9 @@ export const CalendarList = withStyles(({
             const {classes, dates} = this.props;
 
             return (
-                <Grid container direction="column"
-                      className={classes.root}>
+                <div className={classes.root}>
                     {dates.map(this.renderDay)}
-                </Grid>
+                </div>
             )
         }
     });

@@ -60,8 +60,8 @@ export const CalendarGrid = withStyles(({
             dates: [moment.utc()],
             events: [],
             renderEvent: (event) => event.title,
-            renderDate: (hour) => moment({hour}).format('LT'),
-            renderTime: (date) => date.format('D MMM'),
+            renderTime: (date) => date.format('LT'),
+            renderDate: (date) => date.format('D MMM'),
             dimensions,
             colorScheme
         };
@@ -74,7 +74,7 @@ export const CalendarGrid = withStyles(({
         }
 
         CalendarHourGrid = () => {
-            const {classes, startHour, endHour, renderDate} = this.props;
+            const {classes, startHour, endHour, renderTime} = this.props;
 
             return times(endHour - startHour, t => {
                 const hour = t + startHour;
@@ -86,7 +86,7 @@ export const CalendarGrid = withStyles(({
                                 gridColumn: '1 / 2',
                                 gridRow: `${hour + 1} / ${hour + 2}`,
                             }}>
-                            {renderDate(hour)}
+                            {renderTime(moment({hour}))}
                         </div>
                     </Fragment>
                 )

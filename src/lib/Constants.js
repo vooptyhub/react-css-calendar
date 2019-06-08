@@ -10,7 +10,7 @@ export const dimensions = {
 };
 
 export const colorScheme = {
-    background: '#fafafa',
+    background: '#fff',
     divider: '#DCDCDC',
     hover: '#E6E6E6',
     header: '#F5F5F5'

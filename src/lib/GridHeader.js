@@ -27,14 +27,14 @@ export const GridHeader = withStyles(({
 }))(
     class extends React.PureComponent {
         render() {
-            const {classes, dates, renderTime} = this.props;
+            const {classes, dates, renderDate} = this.props;
             return (
                 <div className={classes.root}>
                     <div className={classes.sideline}/>
                     {dates.map((date, index) => (
                         <div key={date} style={{gridRow: '1 / span 2', gridColumn: `${index + 2} / span 1`}}
                              className={classes.dayHeader}>
-                            {renderTime(date, index)}
+                            {renderDate(date, index)}
                         </div>))}
                 </div>
             )

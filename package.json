@@ -1,6 +1,8 @@
 {
   "name": "react-css-calendar",
   "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "dependencies": {
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
