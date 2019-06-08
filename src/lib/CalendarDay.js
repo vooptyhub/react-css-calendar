@@ -22,10 +22,6 @@ export const CalendarDay = withStyles(({
             gridColumn: '1 / span 1',
             gridRow: '1 / span 24',
         },
-        separator: {
-            backgroundColor: ({colorScheme: {divider}}) => divider,
-            height: 1,
-        },
         event: {
             border: ({colorScheme: {divider}}) => `1px solid ${divider}`,
             minWidth: 0,
@@ -37,31 +33,44 @@ export const CalendarDay = withStyles(({
             backgroundColor: ({colorScheme: {hover}}) => hover,
         },
         hour: {
+            display: 'grid',
+            gridColumn: `1 / span 1`,
+            gridTemplateRows: `repeat(${minutesInHour / tenMinutes}, 1fr)`,
+        },
+        tenMinutes: {
             zIndex: 1,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',
-            gridColumn: `1 / span 1`,
             '&:hover': {
                 backgroundColor: ({colorScheme: {hover}}) => hover,
             }
+        },
+        separator: {
+            backgroundColor: ({colorScheme: {divider}}) => divider,
+            height: 1,
         }
     }
 ))(
     class extends Component {
 
         HoursGrid = () => {
-            const {classes, date, onTimeSlotClick} = this.props;
+            const {classes, date, startHour, endHour, onTimeSlotClick} = this.props;
 
             return (
                 <Fragment>
                     {
                         times(hoursInDay, hour => (
                             <div key={hour}
-                                 onClick={() => onTimeSlotClick(date.clone().hour(hour))}
                                  className={classes.hour}
-                                 style={{gridRow: `${hour + 1} / span 1`}}>
-                                <div className={classes.separator}/>
+                                 style={{gridRow: `${hour + 1} / span ${hour < startHour || hour > endHour ? 0 : 1}`}}>
+                                {times(minutesInHour / tenMinutes, minutes => (
+                                    <div className={classes.tenMinutes}
+                                         style={{gridRow: `${minutes + 1} / span 1`}}
+                                         onClick={() => onTimeSlotClick(date.clone().hour(hour).minutes(minutes * tenMinutes))}>
+                                        <div className={classes.separator}/>
+                                    </div>
+                                ))}
                             </div>
                         ))
                     }
