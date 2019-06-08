@@ -42,9 +42,13 @@ export const CalendarDay = withStyles(({
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',
+            opacity: 0.5,
+            '&:last-child': {
+                opacity: 1,
+            },
             '&:hover': {
                 backgroundColor: ({colorScheme: {hover}}) => hover,
-            }
+            },
         },
         separator: {
             backgroundColor: ({colorScheme: {divider}}) => divider,
@@ -63,8 +67,8 @@ export const CalendarDay = withStyles(({
                         times(hoursInDay, hour => (
                             <div key={hour}
                                  className={classes.hour}
-                                 style={{gridRow: `${hour + 1} / span ${hour < startHour || hour > endHour ? 0 : 1}`}}>
-                                {times(minutesInHour / tenMinutes, minutes => (
+                                 style={{gridRow: `${hour + 1} / span 1`}}>
+                                {hour >= startHour && hour <= endHour && times(minutesInHour / tenMinutes, minutes => (
                                     <div className={classes.tenMinutes}
                                          style={{gridRow: `${minutes + 1} / span 1`}}
                                          onClick={() => onTimeSlotClick(date.clone().hour(hour).minutes(minutes * tenMinutes))}>
