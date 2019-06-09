@@ -7,6 +7,7 @@ export const dimensions = {
     tenMinutesHeight: 20,
     timeLineWidth: 70,
     headerHeight: 50,
+    groupedEventsMargin: 0,
 };
 
 export const colorScheme = {

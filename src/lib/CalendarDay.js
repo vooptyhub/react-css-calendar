@@ -83,7 +83,7 @@ export const CalendarDay = withStyles(({
         };
 
         render() {
-            const {classes, events: allEvents, date, renderEvent, style} = this.props;
+            const {classes, events: allEvents, date, renderEvent, style, dimentions} = this.props;
             const {HoursGrid} = this;
 
             const groupedEvents = groupByOverlap(allEvents, date);
@@ -100,6 +100,7 @@ export const CalendarDay = withStyles(({
                                          gridTemplateRows: `repeat(${endRow - startRow}, 1fr)`,
                                          gridRow: toGridRow(startRow, endRow),
                                          zIndex: 2,
+                                         margin: dimentions.groupedEventsMargin
                                      }}>
                                     {events.map((event, i) => (
                                         <div key={i}
