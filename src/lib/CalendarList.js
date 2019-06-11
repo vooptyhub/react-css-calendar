@@ -10,7 +10,7 @@ export const CalendarList = withStyles(({
         borderLeft: ({colorScheme: {divider}}) => `1px solid ${divider}`,
         borderRight: ({colorScheme: {divider}}) => `1px solid ${divider}`,
         overflow: 'auto',
-        flex: "1 0 auto",
+        flex: "1 0 0%",
         display: 'flex',
         flexDirection: 'column'
     },

@@ -1,5 +1,7 @@
 import injectSheet from 'react-jss'
 import _ from 'lodash'
+import {withProps} from "recompose";
+import {colorScheme as defaultColorScheme, dimensions as defaultDimensions} from "./Constants";
 
 const convertArrayTextStyle = (styles) => {
     const stylePairs = styles.map(style => {
@@ -37,3 +39,8 @@ export const withStyles = (...args) => Component => {
     const [styles, options] = args;
     return injectSheet(processStyles(styles), options)(Component)
 };
+
+export const withDefaultSettings = withProps(({dimensions, colorScheme}) => ({
+    dimensions: {...defaultDimensions, ...dimensions},
+    colorScheme: {...defaultColorScheme, ...colorScheme},
+}));

@@ -7,7 +7,8 @@
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
-    "react-jss": "^8.6.1"
+    "react-jss": "^8.6.1",
+    "recompose": "^0.30.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
