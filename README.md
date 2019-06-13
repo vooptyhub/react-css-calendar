@@ -67,7 +67,7 @@ Here you can find a workin component with extra customization https://www.voopty
 Here is more complicated real life example where columns are not days of week:
 ![Voopty Grouped Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2011-48-44.png)
 In the example the date is fixed, but columns are represented by people who are teaching the class. For that we have to override deafult values of followinf props:
-1. `columns` - array of people who are teaching the classes for the day
-2. `renderColumnName` - display info about the person who are teaching the class
-3. `getColumnDate` - return the fixed date
+1. `columns` - array of people who are teaching the classes during the fixed date
+2. `renderColumnName` - display info about the person who is teaching the class
+3. `getColumnDate` - return the fixed date for any column
 4. `getColumnEvents` - return list of the events tought by the person in the column
