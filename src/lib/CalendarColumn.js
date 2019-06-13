@@ -40,6 +40,8 @@ export const CalendarColumn = compose(
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: ({colorScheme: {hover}}) => hover,
+                userSelect: 'none',
+                zIndex: 2,
             },
             hour: {
                 display: 'grid',
@@ -128,7 +130,6 @@ export const CalendarColumn = compose(
                                          display: 'grid',
                                          gridTemplateRows: `repeat(${endRow - startRow}, 1fr)`,
                                          gridRow: toGridRow(startRow, endRow),
-                                         zIndex: 2,
                                          margin: dimensions.groupedEventsMargin
                                      }}>
                                     {events.map((event, i) => (
