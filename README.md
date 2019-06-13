@@ -49,6 +49,7 @@ Here you can find a workin component with extra customization https://www.voopty
 
 # Props:
 Name | Type | Default | Description
+------------ | -------------| -------------| -------------
 startHour | number | 0 | hour when vertical timeline begins
 endHour | number | 24 | hour when vertical timeline ends
 events | array | [] | calendar events to display. The order doesn't matter. Required fields of an event to be displayed correctly is `{start: moment, end: moment}`
