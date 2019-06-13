@@ -65,8 +65,9 @@ https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY (Schedule section,
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
 ## Columns are not days of the week
-In the example, the date is fixed, but columns are represented by people who are teaching the class. For that we have to override default values of following props:
+In the example, the date is fixed, but columns are represented by people who are teaching the class.
 ![Voopty Grouped Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2011-48-44.png)
+For that we have to override default values of following props:
 * `columns` - an array of people who are teaching the classes during the fixed date
 * `renderColumnName` - display info about the person who is teaching the class
 * `getColumnDate` - return the fixed date for any column
