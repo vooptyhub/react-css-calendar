@@ -54,7 +54,7 @@ renderColumnName* | (column) => UIComponent | `(date) => date.format('D MMM')` |
 renderEvent* | (event) => UIComponent | `(event) => event.title` | what to render for each calendar event
 dimensions* | `{ tenMinutesHeight: number, timeLineWidth: number, headerHeight: number, groupedEventsMargin: number }` | `{ tenMinutesHeight: 20, timeLineWidth: 70, headerHeight: 50, groupedEventsMargin: 0 }` | calendar dimentions constants
 colorScheme* | `{ background: color, divider: color, hover: color, header: color}` | `{ background: '#fff', divider: '#DCDCDC', hover: '#E6E6E6', header: '#F5F5F5'}` | calendar color settings
-getColumnDate* | (column) => moment | (date) => date |  what date should be used to each column (see example with custom grouping below)
+getColumnDate* | (column) => moment | (date) => date |  what date should be used to each column (see example with custom grouping https://github.com/vooptyhub/react-css-calendar#grouped-events)
 getColumnEvents* | (column, {events: array}) => array | `(date, {events}) => (events.filter(({start, end}) =>moment(start).isSameOrBefore(date, 'day') && moment(end).isSameOrAfter(date, 'day')))` | return array of events to be displayed in the column
 onTimeSlotClick | (moment) => () | | how to handle click on empty timeslot
 
@@ -64,7 +64,7 @@ onTimeSlotClick | (moment) => () | | how to handle click on empty timeslot
 (Schedule section, switch to week view)
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
-2. **Columns are not days of the week**
+2. **[Columns are not days of the week](#grouped-events)**
 In the example, the date is fixed, but columns are represented by people who are teaching the class. For that we have to override default values of following props:
 ![Voopty Grouped Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2011-48-44.png)
 * `columns` - an array of people who are teaching the classes during the fixed date
