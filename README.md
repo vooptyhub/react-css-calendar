@@ -10,7 +10,7 @@ or
 
 ```yarn add react-css-calendar```
 
-##Example:
+## Example:
 
 ```
 import React from 'react';
@@ -46,7 +46,7 @@ const SimpleExample = () => (
   )
 ```
 
-##Here you can find a workin component with extra customization https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY
+## Here you can find a workin component with extra customization https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY
 
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
