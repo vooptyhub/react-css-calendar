@@ -1,6 +1,5 @@
-**VooptyBusiness** in a set of management tools, developed for education and fitness industries https://www.voopty.com/. A crutial part of Voopty eco-system is Schedule Managment
-
-We developed lightweigh and flexible calendar component which satisfies the most complicated needs of our clients
+**VooptyBusiness** in a set of management tools, developed for education and fitness industries. https://www.voopty.com/ 
+A crutial part of Voopty eco-system is Schedule Managment. We developed lightweigh and flexible calendar component which satisfies the most complicated needs of our clients
 
 ### React css calendar by Voopty
 Install:
