@@ -47,6 +47,8 @@ Here you can find a workin component with extra customization https://www.voopty
 (Schedule section, switch to week view)
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
-
-
-
+# Props:
+Name | Type | Default | Description
+------------ | ------------- | ------------- | -------------
+startHour | number | 0 | hour when vertical timeline begins
+endHour | number | 24 | hour when vertical timeline ends
