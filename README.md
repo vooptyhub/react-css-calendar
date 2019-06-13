@@ -14,7 +14,7 @@ or
 
 ```
 import React from 'react';
-import {CalendarGrid} from './lib/CalendarGrid'
+import {CalendarGrid} from 'react-css-calendar'
 import moment from 'moment'
 
 const SimpleExample = () => (
