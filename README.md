@@ -45,15 +45,18 @@ const SimpleExample = () => (
 # Props:
 Name | Type | Default | Description
 ------------ | -------------| -------------| -------------
-startHour | number | 0 | hour when vertical timeline begins
-endHour | number | 24 | hour when vertical timeline ends
-events | array | [] | calendar events to display. The order doesn't matter. Required fields of an event to be displayed correctly is `{start: moment, end: moment}`
-columns | array | [moment.utc()] | calendar columns to render, doesn't have to be dates(see grouping example below)
-renderTime | (date) => UIComponent | `(date) => date.format('LT')` | what to render on the timeline for each hour
-renderColumnName | (column) => UIComponent | `(date) => date.format('D MMM')` | what to render for each calendar column
-renderEvent | (event) => UIComponent | `(event) => event.title` | what to render for each calendar event
-dimensions | `{ tenMinutesHeight: number, timeLineWidth: number, headerHeight: number, groupedEventsMargin: number }` | `{ tenMinutesHeight: 20, timeLineWidth: 70, headerHeight: 50, groupedEventsMargin: 0 }` | calendar dimentions constants
-colorScheme | `{ background: color, divider: color, hover: color, header: color}` | `{ background: '#fff', divider: '#DCDCDC', hover: '#E6E6E6', header: '#F5F5F5'}` | calendar color settings
+startHour* | number | 0 | hour when vertical timeline begins
+endHour* | number | 24 | hour when vertical timeline ends
+events* | array | [] | calendar events to display. The order doesn't matter. Required fields of an event to be displayed correctly is `{start: moment, end: moment}`
+columns* | array | [moment.utc()] | calendar columns to render, doesn't have to be dates(see grouping example below)
+renderTime* | (moment) => UIComponent | `(date) => date.format('LT')` | what to render on the timeline for each hour
+renderColumnName* | (column) => UIComponent | `(date) => date.format('D MMM')` | what to render for each calendar column
+renderEvent* | (event) => UIComponent | `(event) => event.title` | what to render for each calendar event
+dimensions* | `{ tenMinutesHeight: number, timeLineWidth: number, headerHeight: number, groupedEventsMargin: number }` | `{ tenMinutesHeight: 20, timeLineWidth: 70, headerHeight: 50, groupedEventsMargin: 0 }` | calendar dimentions constants
+colorScheme* | `{ background: color, divider: color, hover: color, header: color}` | `{ background: '#fff', divider: '#DCDCDC', hover: '#E6E6E6', header: '#F5F5F5'}` | calendar color settings
+getColumnDate* | (column) => moment | (date) => date |  what date should be used to each column (see example with custom grouping below)
+getColumnEvents* | (column, {events: array}) => array | `(date, {events}) => (events.filter(({start, end}) =>moment(start).isSameOrBefore(date, 'day') && moment(end).isSameOrAfter(date, 'day')))` | return array of events to be displayed in the column
+onTimeSlotClick | (moment) => () | | how to handle click on empty timeslot
 
 
 
