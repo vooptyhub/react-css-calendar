@@ -1,13 +1,16 @@
-VooptyBusinesses in a set of management tools, developed for education and fitness. A crutial part of Voopty eco-system is Schedule Managment https://www.voopty.com/
+*VooptyBusiness* in a set of management tools, developed for education and fitness. A crutial part of Voopty eco-system is Schedule Managment https://www.voopty.com/
 We developed lightweigh and flexible calendar component which satisfies the most complicated needs of our clients
 
 ### React css calendar by Voopty
 Install:
+
 ```npm install react-css-calendar```
+
 or
+
 ```yarn add react-css-calendar```
 
-Example:
+##Example:
 
 ```
 import React from 'react';
@@ -42,7 +45,8 @@ const SimpleExample = () => (
                                   onTimeSlotClick={(hour) => alert(`hello from empty timeslot ${hour.format()}`)}/>
   )
 ```
-Here you can find a workin component with extra customization https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY
+
+##Here you can find a workin component with extra customization https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY
 
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
