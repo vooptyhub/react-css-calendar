@@ -18,9 +18,7 @@ import {CalendarGrid} from './lib/CalendarGrid'
 import moment from 'moment'
 
 const SimpleExample = () => (
-            <CalendarGrid startHour={7}
-                                  endHour={22}
-                                  events={[
+            <CalendarGrid events={[
                                       {
                                           title: 'voopty',
                                           start: moment.utc().set('hour', 8),
