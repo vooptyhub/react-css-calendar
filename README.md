@@ -1,5 +1,5 @@
-**VooptyBusiness** in a set of management tools, developed for education and fitness industries. https://www.voopty.com/ 
-A crutial part of Voopty eco-system is Schedule Managment. We developed lightweigh and flexible calendar component which satisfies the most complicated needs of our clients
+**VooptyBusiness** in a set of management tools, developed for the education and fitness industries. https://www.voopty.com/ 
+A crucial part of Voopty eco-system is Schedule Management. We developed lightweight and flexible calendar component which satisfies the most complicated needs of our clients
 
 ### React css calendar by Voopty
 Install:
@@ -60,14 +60,16 @@ onTimeSlotClick | (moment) => () | | how to handle click on empty timeslot
 
 
 
-Here you can find a workin component with extra customization https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY
+Here you can find a working component with extra customization https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY
 (Schedule section, switch to week view)
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
-Here is more complicated real life example where columns are not days of week:
+Here is a more complicated real-life example where columns are not days of the week:
 ![Voopty Grouped Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2011-48-44.png)
-In the example the date is fixed, but columns are represented by people who are teaching the class. For that we have to override deafult values of followinf props:
-1. `columns` - array of people who are teaching the classes during the fixed date
+In the example, the date is fixed, but columns are represented by people who are teaching the class. For that we have to override default values of following props:
+1. `columns` - an array of people who are teaching the classes during the fixed date
 2. `renderColumnName` - display info about the person who is teaching the class
 3. `getColumnDate` - return the fixed date for any column
-4. `getColumnEvents` - return list of the events tought by the person in the column
+4. `getColumnEvents` - return list of the events taught by the person in the column
+
+
