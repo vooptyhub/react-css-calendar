@@ -39,8 +39,7 @@ const SimpleExample = () => (
                                           start: moment.utc().set('hour', 12),
                                           end: moment.utc().set('hour', 14),
                                       }
-                                  ]}
-                                  onTimeSlotClick={(hour) => alert(`hello from empty timeslot ${hour.format()}`)}/>
+                                  ]}/>
   )
 ```
 
