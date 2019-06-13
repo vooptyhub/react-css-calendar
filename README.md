@@ -60,11 +60,11 @@ onTimeSlotClick | (moment) => () | | how to handle click on empty timeslot
 
 ## Use Cases:
 
-1. The component with extra customization https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY
+1. **Simple UI customization** https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY
 (Schedule section, switch to week view)
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
-2. more complicated real-life example where columns are not days of the week:
+2. **Columns are not days of the week**:
 ![Voopty Grouped Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2011-48-44.png)
 In the example, the date is fixed, but columns are represented by people who are teaching the class. For that we have to override default values of following props:
 1. `columns` - an array of people who are teaching the classes during the fixed date
