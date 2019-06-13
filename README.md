@@ -61,7 +61,7 @@ onTimeSlotClick | (moment) => () | | how to handle click on empty timeslot
 ### Use Cases:
 
 ## Simple UI customization 
-https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY(Schedule section, switch to week view)
+https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY (Schedule section, switch to week view)
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
 ## Columns are not days of the week
