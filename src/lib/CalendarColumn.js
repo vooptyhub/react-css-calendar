@@ -40,7 +40,6 @@ export const CalendarColumn = compose(
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: ({colorScheme: {hover}}) => hover,
-                userSelect: 'none',
                 zIndex: 2,
             },
             hour: {

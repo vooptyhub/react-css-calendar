@@ -10,9 +10,7 @@ class App extends Component {
                     <h2>Welcome to React Calendar based on Grid CSS by Voopty</h2>
                 </div>
                 <div className="App-intro">
-                    <CalendarGrid startHour={7}
-                                  endHour={22}
-                                  events={[
+                    <CalendarGrid events={[
                                       {
                                           title: 'voopty',
                                           start: moment.utc().set('hour', 8),
