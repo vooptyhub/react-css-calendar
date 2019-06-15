@@ -84,7 +84,7 @@ export const CalendarColumn = compose(
             endHour: 24,
             date: moment.utc(),
             events: [],
-            renderEvent: (event) => event.title,
+            renderEvent: (event) => `${event.start.format('LT')}-${event.end.format('LT')} ${event.title}`,
         };
 
         HoursGrid = () => {
@@ -113,7 +113,7 @@ export const CalendarColumn = compose(
         };
 
         render() {
-            const {classes, events: allEvents, date, renderEvent, style, dimensions} = this.props;
+            const {classes, events: allEvents, date, startHour, endHour, renderEvent, style, dimensions} = this.props;
             const {HoursGrid} = this;
 
             const groupedEvents = groupByOverlap(allEvents, date);
@@ -123,19 +123,24 @@ export const CalendarColumn = compose(
                     <HoursGrid/>
                     <div className={classes.timegrid}>
                         {groupedEvents.map(({startRow, endRow, events}, i) => {
+                            const normalizedStartRow = Math.max(startRow, toMinutes(startHour));
+                            const normalizedEndRow = Math.min(endRow, toMinutes(endHour));
                             return (
                                 <div key={i}
                                      style={{
                                          display: 'grid',
-                                         gridTemplateRows: `repeat(${endRow - startRow}, 1fr)`,
-                                         gridRow: toGridRow(startRow, endRow),
+                                         gridTemplateRows: `repeat(${normalizedEndRow - normalizedStartRow}, 1fr
+    )`,
+                                         gridRow: toGridRow(normalizedStartRow, normalizedEndRow),
                                          margin: dimensions.groupedEventsMargin
                                      }}>
                                     {events.map((event, i) => (
                                         <div key={i}
                                              className={classes.event}
                                              style={{
-                                                 gridRow: toGridRow(event.startRow - startRow, event.endRow - startRow),
+                                                 gridRow: toGridRow(
+                                                     Math.max(event.startRow, toMinutes(startHour)) - normalizedStartRow,
+                                                     Math.min(event.endRow, toMinutes(endHour)) - normalizedStartRow),
                                              }}>
                                             {renderEvent(event, i)}
                                         </div>

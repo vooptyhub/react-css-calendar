@@ -10,26 +10,32 @@ class App extends Component {
                     <h2>Welcome to React Calendar based on Grid CSS by Voopty</h2>
                 </div>
                 <div className="App-intro">
-                    <CalendarGrid events={[
+                    <CalendarGrid startHour={7} endHour={22}
+                                  events={[
+                                      {
+                                          title: 'whole day',
+                                          start: moment.utc().set('hour', 0).set('minutes', 0),
+                                          end: moment.utc().set('hour', 23).set('minutes', 59),
+                                      },
                                       {
                                           title: 'voopty',
-                                          start: moment.utc().set('hour', 8),
-                                          end: moment.utc().set('hour', 9),
+                                          start: moment.utc().set('hour', 8).set('minutes', 0),
+                                          end: moment.utc().set('hour', 9).set('minutes', 0),
                                       },
                                       {
                                           title: 'calendar',
-                                          start: moment.utc().set('hour', 8),
-                                          end: moment.utc().set('hour', 10),
+                                          start: moment.utc().set('hour', 8).set('minutes', 0),
+                                          end: moment.utc().set('hour', 10).set('minutes', 0),
                                       },
                                       {
                                           title: 'says',
                                           start: moment.utc().set('hour', 9).set('minutes', 30),
-                                          end: moment.utc().set('hour', 11),
+                                          end: moment.utc().set('hour', 11).set('minutes', 0),
                                       },
                                       {
                                           title: 'hello',
-                                          start: moment.utc().set('hour', 12),
-                                          end: moment.utc().set('hour', 14),
+                                          start: moment.utc().set('hour', 12).set('minutes', 0),
+                                          end: moment.utc().set('hour', 14).set('minutes', 0),
                                       }
                                   ]}
                                   onTimeSlotClick={(hour) => alert(`hello from empty timeslot ${hour.format()}`)}/>
