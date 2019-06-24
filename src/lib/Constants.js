@@ -1,6 +1,5 @@
 export const minutesInHour = 60;
 export const hoursInDay = 24;
-export const daysInWeek = 7;
 export const tenMinutes = 10;
 
 export const dimensions = {

@@ -3,10 +3,9 @@ import {compose, setPropTypes, withProps, withStateHandlers, defaultProps, lifec
 import PropTypes from "prop-types";
 import moment from 'moment'
 import {withStyles} from './styles'
-import {colorScheme, daysInWeek} from './Constants'
-import _ from 'lodash'
+import {colorScheme} from './Constants'
 
-const monthRange = function* (start, end) {
+const dateRange = function* (start, end) {
     let current = moment(start);
 
     while (current.isBefore(end)) {
@@ -16,9 +15,9 @@ const monthRange = function* (start, end) {
 };
 
 const generateDays = withProps(({month}) => ({
-    days: [...monthRange(
-        moment(month).startOf('month').startOf('week').add(1, 'day'),
-        moment(month).endOf('month').startOf('week').add(8, 'days'),
+    days: [...dateRange(
+        moment(month).startOf('month').startOf('week'),
+        moment(month).endOf('month').startOf('week').add(7, 'days'),
     )],
 }));
 
@@ -43,7 +42,7 @@ export const CalendarDayPicker = compose(
         onDateChange: PropTypes.func,
         renderMonth: PropTypes.func,
         renderDayOfWeek: PropTypes.func,
-        renderDayOfMonth: PropTypes.func,
+        DayOfMonth: PropTypes.elementType,
         NextMonthButton: PropTypes.elementType,
         PreviousMonthButton: PropTypes.elementType,
     }),
@@ -52,8 +51,8 @@ export const CalendarDayPicker = compose(
         },
         renderMonth: (month) => month.format('MMMM YYYY'),
         renderDayOfWeek: (day) => day.format('ddd'),
-        renderDayOfMonth: (day, date) => (<div
-            style={day.isSame(date, 'day') ? {fontWeight: 'bold'} : (day.isBefore(moment(date).startOf('month')) ? {color: colorScheme.divider} : {})}>{day.format('D')}</div>),
+        DayOfMonth: ({day, date}) => (<div
+            style={day.isSame(date, 'day') ? {fontWeight: 'bold'} : (day.isBefore(moment()) ? {color: colorScheme.divider} : {})}>{day.format('D')}</div>),
         NextMonthButton: defaultNavButton('>'),
         PreviousMonthButton: defaultNavButton('<'),
     }),
@@ -81,12 +80,17 @@ export const CalendarDayPicker = compose(
         },
         day: {
             cursor: 'pointer',
-            width: daySize,
+            width: '100%',
             height: daySize,
-            borderRadius: daySize,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            '&:hover': {
+                backgroundColor: colorScheme.hover,
+            },
+        },
+        weekDay: {
+            textAlign: 'center',
         }
     }),
 )(
@@ -100,28 +104,23 @@ export const CalendarDayPicker = compose(
          onDateChange,
          renderMonth,
          renderDayOfWeek,
-         renderDayOfMonth,
+         DayOfMonth,
          NextMonthButton,
          PreviousMonthButton
      }) => {
-        const startOfThisWeek = moment(date).startOf('week');
+        const weekDays = [...dateRange(moment(date).startOf('week'), moment(date).endOf('week'))];
         return (
             <div>
                 <div className={classes.navigation}>
                     <PreviousMonthButton onClick={prevMonth}/>
-                    <div>{renderMonth(month)}</div>
+                    <div className={classes.weekDay}>{renderMonth(month)}</div>
                     <NextMonthButton onClick={nextMonth}/>
                 </div>
                 <div className={classes.grid}>
-                    {_.times(daysInWeek, (i) => (
-                        <div key={i}>{renderDayOfWeek(startOfThisWeek.add(i, 'day'))}</div>
-                    ))}
+                    {weekDays.map((day, i) => (<div key={i}>{renderDayOfWeek(day)}</div>))}
                     {days.map((day, i) => (
-                        <div key={i} onClick={() => onDateChange(day)}
-                             className={classes.day}>
-                            {renderDayOfMonth(day, date)}
-                        </div>
-                    ))}
+                        <DayOfMonth className={classes.day} date={date} key={i} onClick={() => onDateChange(day)}
+                                    day={day}/>))}
                 </div>
             </div>
         )
