@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {CalendarGrid} from './lib/CalendarGrid'
+import {CalendarDayPicker} from './lib/CalendarDayPicker'
 import moment from 'moment'
 
 class App extends Component {
@@ -9,7 +10,10 @@ class App extends Component {
                 <div className="App-header">
                     <h2>Welcome to React Calendar based on Grid CSS by Voopty</h2>
                 </div>
-                <div className="App-intro">
+                <div className="App-intro-tiday-picker">
+                    <CalendarDayPicker date={moment()}/>
+                </div>
+                <div className="App-intro-grid">
                     <CalendarGrid startHour={7} endHour={22}
                                   events={[
                                       {
