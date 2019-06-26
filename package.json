@@ -1,19 +1,21 @@
 {
   "name": "react-css-calendar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
-  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
+    "react": "^16.8.6",
     "react-jss": "^8.6.1",
+    "react-dom": "^16.8.6",
     "recompose": "^0.30.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "react-scripts": "0.9.x"
   },
   "scripts": {
