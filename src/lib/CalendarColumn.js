@@ -41,6 +41,7 @@ export const CalendarColumn = compose(
                 flexDirection: 'column',
                 backgroundColor: ({colorScheme: {hover}}) => hover,
                 zIndex: 2,
+                "-webkit-transform":"translate3d(0,0,0)"
             },
             hour: {
                 display: 'grid',
