@@ -1,6 +1,6 @@
 Lightweight and flexible calendar component which satisfies the most complicated needs of our clients
 
-### React css calendar by Voopty
+### React css calendar
 Install:
 
 ```npm install react-css-calendar```
