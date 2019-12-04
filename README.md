@@ -1,5 +1,4 @@
-**VooptyBusiness** in a set of management tools, developed for the education and fitness industries. https://www.voopty.com/ 
-A crucial part of Voopty eco-system is Schedule Management. We developed lightweight and flexible calendar component which satisfies the most complicated needs of our clients
+Lightweight and flexible calendar component which satisfies the most complicated needs of our clients
 
 ### React css calendar by Voopty
 Install:
@@ -61,7 +60,6 @@ onTimeSlotClick | (moment) => () | | how to handle click on empty timeslot
 ### Use Cases:
 
 ## Simple UI customization 
-https://www.voopty.com/studio/STUDIOTHEATREACTINGCONSERVATORY (Schedule section, switch to week view)
 ![Voopty Calendar Example](https://github.com/vooptyhub/react-css-calendar/blob/master/public/Screenshot%20at%20Jun%2013%2010-50-23.png)
 
 ## Columns are not days of the week
